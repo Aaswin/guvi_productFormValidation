@@ -5,6 +5,8 @@ import { ContactComponent } from './contact/contact.component';
 import { CreateProductComponent } from './create-product/create-product.component';
 import { CreateUserComponent } from './create-user/create-user.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { EditProductComponent } from './edit-product/edit-product.component';
+import { EditUserComponent } from './edit-user/edit-user.component';
 import { HeadevComponent } from './headev/headev.component';
 import { HomeComponent } from './home/home.component';
 import { ProductListingComponent } from './product-listing/product-listing.component';
@@ -53,6 +55,14 @@ const routes: Routes = [
     path:'dashboard',
     component:DashboardComponent
   },
+  {
+    path:'edit-products/:id',
+    component:EditProductComponent
+  },
+  {
+    path:'edit-user/:id',
+    component:EditUserComponent
+  }
  
 ];
 

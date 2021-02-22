@@ -16,6 +16,9 @@ import { UserCardComponent } from './user-card/user-card.component';
 import { CreateUserComponent } from './create-user/create-user.component';
 import { UserComponent } from './user/user.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { EditProductComponent } from './edit-product/edit-product.component';
+import { EditUserComponent } from './edit-user/edit-user.component';
 
 @NgModule({
   declarations: [
@@ -32,11 +35,15 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     UserCardComponent,
     CreateUserComponent,
     UserComponent,
-    DashboardComponent
+    DashboardComponent,
+    EditProductComponent,
+    EditUserComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ReactiveFormsModule
+  
   ],
   providers: [],
   bootstrap: [AppComponent]

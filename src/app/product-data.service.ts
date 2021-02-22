@@ -40,15 +40,31 @@ export class ProductDataService {
   {
     return this.data;
   }
-  getProductById(id:number)
+  getProductById(id:number):any
   {
     return  this.data.find(p=>p.id==id);
   }
+  addProduct(dataObj:any)
+  {
+    dataObj.id=this.data.length + 1;
+    dataObj.image="http://placehold.it/20*20";
+    this.data.push(dataObj);
+    console.log(dataObj);
+  }
   deleteProductById(i:any)
   {
-
-   const j=this.data.findIndex(x=>x.id==i);
+    const j=this.data.findIndex(x=>x.id==i);
     console.log(i,j,this.data[j]);
-   this.data.splice(j,1);
+    this.data.splice(j,1);
+  }
+  updateProduct(id:number,dataObj:any)
+  {
+    let ind=this.data.findIndex((obj)=>
+    {
+      return obj.id==id;
+    })
+    dataObj.id=id;
+    dataObj.image="http://placehold.it/20*20";
+    this.data[ind]=dataObj;
   }
 }

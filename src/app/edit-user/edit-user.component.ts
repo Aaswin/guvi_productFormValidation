@@ -4,44 +4,31 @@ import {ActivatedRoute, Router } from '@angular/router';
 import { UserDataService } from '../user-data.service';
 
 @Component({
-  selector: 'app-create-user',
-  templateUrl: './create-user.component.html',
-  styleUrls: ['./create-user.component.css']
+  selector: 'app-edit-user',
+  templateUrl: './edit-user.component.html',
+  styleUrls: ['./edit-user.component.css']
 })
-export class CreateUserComponent implements OnInit 
-{
+export class EditUserComponent implements OnInit {
   userFormGroup:any={};
   constructor(private activatedRoute:ActivatedRoute ,private fb:FormBuilder,private userDataService:UserDataService,private router:Router) { }
   ngOnInit(): void 
   {
+    let currentId=this.activatedRoute.snapshot.params.id;
+    let currentUser=this.userDataService.getUsersById(currentId);
     this.userFormGroup=this.fb.group(
         {
-          name:this.fb.control('',[Validators.required,Validators.minLength(5),Validators.maxLength(50)]),
-          age:this.fb.control('',Validators.required),
-          email:this.fb.control('',Validators.required),
-          password:this.fb.control('',Validators.required),
-          cpassword:this.fb.control('',Validators.required)
+          name:this.fb.control(currentUser.name,[Validators.required,Validators.minLength(5),Validators.maxLength(50)]),
+          age:this.fb.control(currentUser.age,Validators.required),
+          email:this.fb.control(currentUser.email,Validators.required),
+          password:this.fb.control(currentUser.password,Validators.required)
         })
-
-    this.userFormGroup.get('cpassword').valueChanges.subscribe((data:any)=>
-    {
-          if(this.userFormGroup.get('password').value==data)
-          {
-            console.log(data);
-          }
-          else
-          {
-            this.userFormGroup.get('cpassword').setErrors({confirm:false});
-            console.log(data);
-          }
-    });
   }
   submitUserForm()
   {
     if(this.userFormGroup.valid)
     {
       console.log(this.userFormGroup.value);
-      this.userDataService.addUser(this.userFormGroup.value);
+      this.userDataService.updateUser(this.activatedRoute.snapshot.params.id,this.userFormGroup.value);
       this.userFormGroup.reset();
       this.router.navigate(['/userlist']);
     }
@@ -66,4 +53,3 @@ export class CreateUserComponent implements OnInit
       })
   }
 }
-

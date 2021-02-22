@@ -1,6 +1,6 @@
 <div class="container">
     <form [formGroup]="userFormGroup" (ngSubmit)="submitUserForm()"  >
-        <h1>create form</h1>
+        <h1>Edit form</h1>
         <div class="row">
             <div class="col-lg-6">
                 <div class="form-group">
@@ -25,18 +25,16 @@
                 <div class="form-group">
                     <label for="">Password</label>
                     <input type="text" formControlName="password" class="form-control">
-                    <span style="color:red;" *ngIf="userFormGroup.get('email').touched && !userFormGroup.get('email').valid" >required field</span>
+                    <span style="color:red;" *ngIf="userFormGroup.get('email').touched && !userFormGroup.get('name').valid" >required field</span>
                    
                 </div>
             </div>
             <div class="col-lg-6">
                 <div class="form-group">
                     <label for="">Confirm Password</label>
-                    <input type="text" formControlName="cpassword" class="form-control">
-                    <span style="color:red;" *ngIf="userFormGroup.get('cpassword').errors?.confirm==false">password dont match</span>
+                    <input type="text" class="form-control">
                 </div>
-            </div>
-             
+            </div>    
             <div class="col-lg-6">
                 <div class="form-group">
                     <label for="">Age</label>
@@ -57,7 +55,7 @@
         <div class="row">
             <div class="col-lg-12">
                 <button class="btn btn-primary">
-                    Submit
+                    Submit changes
                 </button>
             </div>
         </div>

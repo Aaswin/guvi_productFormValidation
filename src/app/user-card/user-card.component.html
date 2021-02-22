@@ -7,7 +7,7 @@
       <p class="card-text">{{userData['age']}}</p>
       <div class="d-flex justify-content-between align-items-center">
         <div class="btn-group">
-          <button type="button" class="btn btn-sm btn-outline-secondary" [routerLink]="['/user',userData['id']]">Edit</button>
+          <button type="button" class="btn btn-sm btn-outline-secondary" [routerLink]="['/edit-user',userData['id']]">Edit</button>
           <button type="button" (click)="deleteObj(userData['id'])" class="btn btn-sm btn-outline-secondary">delete</button>
         </div>
         <small class="text-muted">9 mins</small>
